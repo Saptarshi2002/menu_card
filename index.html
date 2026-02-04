@@ -1,5 +1,3 @@
-<!-- https://github.com/Saptarshi2002/menu_card.git -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +31,7 @@
             color: var(--text-color);
             font-family: var(--font-body);
             line-height: 1.6;
-            padding-bottom: 80px; /* Space for bottom nav */
+            padding-bottom: 100px; /* Default space for mobile bottom nav */
         }
 
         /* --- Header Section --- */
@@ -73,6 +71,7 @@
             padding: 30px 20px;
             max-width: 600px;
             margin: 0 auto;
+            scroll-margin-top: 80px; /* Prevents nav from covering titles */
         }
 
         .section-title {
@@ -145,30 +144,24 @@
             letter-spacing: 1px;
         }
 
-        /* --- Sticky Bottom Navigation --- */
-        .bottom-nav {
+        /* --- RESPONSIVE NAVIGATION STYLES --- */
+        .nav-container {
             position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(47, 62, 70, 0.95); /* Dark semi-transparent */
+            background: rgba(47, 62, 70, 0.98);
             backdrop-filter: blur(10px);
-            padding: 10px 20px;
-            border-radius: 50px;
-            display: flex;
-            gap: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 100;
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         .nav-link {
             color: #fff;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 5px 10px;
+            padding: 10px;
             transition: color 0.3s;
+            white-space: nowrap;
         }
 
         .nav-link.active {
@@ -176,17 +169,52 @@
             font-weight: 600;
         }
 
-        /* --- Smooth Scroll Adjustment --- */
-        html {
-            scroll-behavior: smooth;
+        /* MOBILE VIEW (Capsule at bottom) */
+        @media (max-width: 768px) {
+            .nav-container {
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 400px;
+                height: 60px;
+                border-radius: 50px;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
         }
 
-        /* Offset for sticky header if needed, strictly creates space */
-        section {
-            scroll-margin-top: 20px;
+        /* DESKTOP VIEW (Bar at top) */
+        @media (min-width: 769px) {
+            body { 
+                padding-bottom: 0; 
+                padding-top: 60px; /* Make space for top nav */
+            }
+            
+            header {
+                padding-top: 40px;
+            }
+
+            .nav-container {
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 60px;
+                border-radius: 0;
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+                align-items: center;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-link { font-size: 0.9rem; }
+            .menu-section { scroll-margin-top: 100px; }
         }
-        
-        /* Footer */
+
+        /* --- Footer --- */
         footer {
             text-align: center;
             font-size: 0.8rem;
@@ -194,6 +222,10 @@
             padding: 40px 20px;
             font-family: var(--font-heading);
             font-style: italic;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
 
     </style>
@@ -307,7 +339,7 @@
         <p>Use hashtag #SophiaAndLiam</p>
     </footer>
 
-    <nav class="bottom-nav">
+    <nav class="nav-container">
         <a href="#starters" class="nav-link">Starters</a>
         <a href="#mains" class="nav-link">Mains</a>
         <a href="#dessert" class="nav-link">Sweets</a>
@@ -323,7 +355,7 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
+                // Adjusted offset for better accuracy with sticky navs
                 if (scrollY >= (sectionTop - 150)) {
                     current = section.getAttribute('id');
                 }
