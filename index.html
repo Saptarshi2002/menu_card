@@ -1,0 +1,342 @@
+<!-- https://github.com/Saptarshi2002/menu_card.git -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Menu | Sophia & Liam</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Palette: Quiet Luxury / Earthy Minimalist */
+            --bg-color: #F9F7F2; /* Soft Cream */
+            --text-color: #2F3E46; /* Dark Charcoal/Green */
+            --accent-color: #D4AF37; /* Muted Gold */
+            --secondary-bg: #FFFFFF;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            padding-bottom: 80px; /* Space for bottom nav */
+        }
+
+        /* --- Header Section --- */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background-image: radial-gradient(#E8E6E1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .monogram {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .date {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #888;
+        }
+
+        /* --- Menu Sections --- */
+        .menu-section {
+            padding: 30px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            color: var(--text-color);
+        }
+
+        /* Decorative line under titles */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        /* --- Menu Items --- */
+        .menu-item {
+            background: var(--secondary-bg);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.2s ease;
+        }
+
+        .menu-item:active {
+            transform: scale(0.98);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .dish-name {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .dish-desc {
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 300;
+        }
+
+        /* --- Badges (GF, V) --- */
+        .badges {
+            display: flex;
+            gap: 5px;
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Sticky Bottom Navigation --- */
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(47, 62, 70, 0.95); /* Dark semi-transparent */
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: flex;
+            gap: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        .nav-link.active {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* --- Smooth Scroll Adjustment --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Offset for sticky header if needed, strictly creates space */
+        section {
+            scroll-margin-top: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #aaa;
+            padding: 40px 20px;
+            font-family: var(--font-heading);
+            font-style: italic;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="monogram">S & L</div>
+        <h1>The Menu</h1>
+        <div class="date">October 14, 2026</div>
+    </header>
+
+    <section id="starters" class="menu-section">
+        <h2 class="section-title">To Start</h2>
+        
+        <div class="menu-item">
+            <div class="item-header">
+                <span class="dish-name">Heirloom Burrata</span>
+                <div class="badges">
+                    <span class="badge">V</span>
+                    <span class="badge">GF</span>
+                </div>
+            </div>
+            <p class="dish-desc">Slow-roasted tomatoes, basil pesto oil, crushed pistachio, balsamic glaze.</p>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <span class="dish-name">Seared Scallops</span>
+            </div>
+            <p class="dish-desc">Cauliflower purée, crispy pancetta, lemon butter emulsion.</p>
+        </div>
+    </section>
+
+    <section id="mains" class="menu-section">
+        <h2 class="section-title">The Mains</h2>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <span class="dish-name">Herb-Crusted Lamb</span>
+            </div>
+            <p class="dish-desc">Rack of lamb, dauphinoise potatoes, seasonal greens, red wine reduction.</p>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <span class="dish-name">Wild Mushroom Risotto</span>
+                <div class="badges">
+                    <span class="badge">V</span>
+                    <span class="badge">GF</span>
+                </div>
+            </div>
+            <p class="dish-desc">Arborio rice, truffle oil, parmesan crisp, fresh thyme.</p>
+        </div>
+        
+        <div class="menu-item">
+            <div class="item-header">
+                <span class="dish-name">Pan-Roasted Sea Bass</span>
+                <div class="badges">
+                    <span class="badge">GF</span>
+                </div>
+            </div>
+            <p class="dish-desc">Saffron fennel purée, blistered cherry tomatoes, salsa verde.</p>
+        </div>
+    </section>
+
+    <section id="dessert" class="menu-section">
+        <h2 class="section-title">Sweet Ending</h2>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <span class="dish-name">Dark Chocolate Tart</span>
+                <div class="badges">
+                    <span class="badge">V</span>
+                </div>
+            </div>
+            <p class="dish-desc">Sea salt caramel, raspberry coulis, vanilla bean cream.</p>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <span class="dish-name">Wedding Cake</span>
+            </div>
+            <p class="dish-desc">Lemon elderflower sponge with swiss meringue buttercream.</p>
+        </div>
+    </section>
+    
+    <section id="drinks" class="menu-section">
+        <h2 class="section-title">To Drink</h2>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <span class="dish-name">Signature Cocktails</span>
+            </div>
+            <p class="dish-desc">
+                <strong>The "I Do"</strong> - Gin, Elderflower, Prosecco<br>
+                <strong>The Groom's Old Fashioned</strong> - Bourbon, Bitters, Orange Peel
+            </p>
+        </div>
+        
+        <div class="menu-item">
+            <div class="item-header">
+                <span class="dish-name">Wine Selection</span>
+            </div>
+            <p class="dish-desc">Sauvignon Blanc (NZ) & Cabernet Sauvignon (Napa)</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Bon Appétit</p>
+        <p>Use hashtag #SophiaAndLiam</p>
+    </footer>
+
+    <nav class="bottom-nav">
+        <a href="#starters" class="nav-link">Starters</a>
+        <a href="#mains" class="nav-link">Mains</a>
+        <a href="#dessert" class="nav-link">Sweets</a>
+        <a href="#drinks" class="nav-link">Drinks</a>
+    </nav>
+
+    <script>
+        // Optional: Add active state to bottom nav based on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
